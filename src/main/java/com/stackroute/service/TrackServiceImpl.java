@@ -35,11 +35,17 @@ public class TrackServiceImpl implements TrackService
     @Override
     public void updateTrack(Track track)
     {
-         trackRepository.save(track);
+        trackRepository.save(track);
     }
+
 
     @Override
     public void deleteTrack(int id) {
         trackRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Track> trackByName(String name) {
+        return trackRepository.trackByName(name);
     }
 }
