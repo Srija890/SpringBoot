@@ -1,17 +1,23 @@
 
 package com.stackroute.domain;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
+@ApiModel(description = "Track info...")
 public class Track
 {
     // Declaration of fields in table
     @Id
     int id;
+    @ApiModelProperty(notes = "Generated Track-Name")
     String name;
+    @ApiModelProperty(notes = "GenerATED TRACK-Comment")
     String comment;
 
 

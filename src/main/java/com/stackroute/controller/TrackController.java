@@ -1,20 +1,28 @@
 package com.stackroute.controller;
 import com.stackroute.domain.Track;
+import com.stackroute.repository.TrackRepository;
 import com.stackroute.service.TrackService;
+import io.swagger.annotations.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping(value="api/v1")
+//@Api(value = "Muzic of tracks")
 public class TrackController
 {
+
+    @Autowired
+    private TrackRepository trackRepository;
     // Declaration
     TrackService trackService;
 
-    // Performing CRUD operations....
+
     public TrackController(TrackService trackService)
     {
         this.trackService = trackService;
@@ -62,7 +70,8 @@ public class TrackController
 
     // Implementing DELETE method
     @DeleteMapping(value="/track/{id}")
-    public ResponseEntity<?> deleteTrack(@PathVariable("id") int id) {
+    public ResponseEntity<?> deleteTrack(@ApiParam(value = "Data is retrieved based on track-id", required = true)@PathVariable("id") int id)
+    {
         ResponseEntity responseEntity;
         try {
             trackService.deleteTrack(id);
@@ -73,8 +82,10 @@ public class TrackController
         return responseEntity;
     }
     // Retrieving Data by name field
+    @RequestMapping(value = "/update/{name}", method = RequestMethod.GET,
+            produces = "application/json")
     @GetMapping(value="/track/{name}")
-    public ResponseEntity<?> trackByName(@PathVariable("name") String name)
+    public ResponseEntity<?> trackByName(@ApiParam(value = "Data is retrieved based on track-name", required = true)@PathVariable("name") String name)
     {
         return new ResponseEntity<List<Track>>(trackService.trackByName(name),HttpStatus.OK);
     }
