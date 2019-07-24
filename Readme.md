@@ -1,3 +1,3 @@
-Task -1:
+Task-3:
 
-Completing all the endpoints for CRUD operations on Muzix
+Add an endpoint to search trackByName. Understand @Query and parameter passing to @Query
