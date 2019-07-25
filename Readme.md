@@ -1,5 +1,6 @@
-Task-6
-Running Logic on Startup in Spring. Create seed data to pre-fill the database with track
-information whenever the application starts. Use both approaches:
-Approach 1: ApplicationListener<ContextRefreshedEvent>
-Approach 2: CommandLineRunner (Find out how it differs from ApplicationRunner)
+Task-8
+8.Remove all hard coded data from the application code to application.properties
+a)by using @Value.
+b)by using @PropertySource
+c)by using Environment
+
