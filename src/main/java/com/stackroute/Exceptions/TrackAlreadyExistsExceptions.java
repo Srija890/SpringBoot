@@ -1,12 +1,12 @@
 package com.stackroute.Exceptions;
 
 public class TrackAlreadyExistsExceptions extends Exception {
-    //Declaration
+   /* //Declaration
     private String exceptionmessage;
 
     public TrackAlreadyExistsExceptions(String message)
     {
         super(message);
         this.exceptionmessage=message;
-    }
+    }*/
 }

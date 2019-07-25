@@ -16,6 +16,7 @@ import java.util.List;
 //@Api(value = "Muzic of tracks")
 public class TrackController
 {
+    ErrorController errorController=new ErrorController();
 
     @Autowired
     private TrackRepository trackRepository;
@@ -39,7 +40,7 @@ public class TrackController
         }
         catch (Exception e)
         {
-            responseEntity=new ResponseEntity<String>(e.getMessage(),HttpStatus.CONFLICT);
+            responseEntity=errorController.exception();
         }
         return responseEntity;
 
