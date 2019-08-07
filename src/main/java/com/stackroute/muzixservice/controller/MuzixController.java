@@ -16,6 +16,7 @@ public class MuzixController {
 
     @Autowired
     private MuzixService muzixService;
+    private ResponseEntity responseEntity;
 
     public MuzixController(MuzixService muzixService) {
         this.muzixService = muzixService;
@@ -24,8 +25,6 @@ public class MuzixController {
     @PostMapping("track")
     public ResponseEntity<?> saveTrack(@RequestBody Track track) throws TrackAlreadyExistsException
     {
-
-        ResponseEntity responseEntity;
         Track savedTrack=null;
         savedTrack = muzixService.saveTrack(track);
         responseEntity = new ResponseEntity<Track>(savedTrack, HttpStatus.CREATED);
@@ -41,7 +40,7 @@ public class MuzixController {
     @PutMapping("track/{id}/{comment}")
     public ResponseEntity<?> getTrackAfterUpdatingComments( @PathVariable String id,@PathVariable  String comment) throws TrackNotFoundException
     {
-        ResponseEntity responseEntity;
+       
         responseEntity=new ResponseEntity<Track>(muzixService.updateTrackComments(id, comment), HttpStatus.OK);
         return responseEntity;
     }
@@ -49,7 +48,7 @@ public class MuzixController {
     @DeleteMapping("track/{id}")
     public ResponseEntity<?> getTrackAfterDeleting(@PathVariable String id) throws TrackNotFoundException
     {
-        ResponseEntity responseEntity;
+       
         responseEntity=new ResponseEntity<Track>(muzixService.deleteTrack(id), HttpStatus.OK);
         return responseEntity;
     }
